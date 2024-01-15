@@ -1,5 +1,6 @@
 package com.example.drealtor.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -17,13 +18,17 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.drealtor.R
 import com.example.drealtor.utils.Screens
 
 @Composable()
@@ -83,11 +88,14 @@ fun ImageCard(
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
 
-//            Image(
-//                 painter = painterResource(id = R.drawable.car),
-//                contentDescription = desc,
-//                contentScale = ContentScale.Crop
-//            )
+            Image(
+                 painter = painterResource(id = R.drawable.car),
+                contentDescription = desc,
+                contentScale = ContentScale.Crop,
+                modifier = modifier.height(200.dp).width(200.dp)
+            )
+
+
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -101,6 +109,13 @@ fun ImageCard(
                         )
                     )
             )
+            Box(
+                modifier = Modifier.fillMaxSize().padding(10.dp),
+                contentAlignment = Alignment.BottomStart
+            ) {
+                Text(text = title, color = Color.White)
+            }
+
         }
 
     }
@@ -111,7 +126,7 @@ fun CategoryCard(title: String) {
     Text(
         modifier = Modifier
             .clickable { }
-            .padding(10.dp, 0.dp)
+            .padding(0.dp, 0.dp,5.dp,0.dp)
             .background(color = Color.Gray, shape = RoundedCornerShape(30.dp))
             .padding(20.dp, 5.dp),
         text = title,
